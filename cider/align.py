@@ -90,8 +90,8 @@ def align(settings,seq,genome,logger):
 					,id=seq.id,description='')
 
 			#open outputfile
-			outputfile=settings['outputdir']+"/"+str(seq.id)+"."+genome+".align.fa"
-			fout = open(outputfile,'wt')
+			outputfile=settings['outputdir']+"/"+str(seq.id)+"."+genome+".align"
+			fout = open(outputfile+".fa",'wt')
 			#write sequence
 			SeqIO.write(seq,fout,'fasta')
 			#close file

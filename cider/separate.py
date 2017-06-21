@@ -55,8 +55,8 @@ def separate(settings,seq,logger):
 	#remove temporary directory
 	os.rmdir(tmpdir)
 	#open outputfile
-	outputfile=settings['outputdir']+"/"+str(seq.id)+"."+genome+".separate.fa"
-	fout = open(outputfile,'wt')
+	outputfile=settings['outputdir']+"/"+str(seq.id)+"."+genome+".separate"
+	fout = open(outputfile+".fa",'wt')
 	#write sequence
 	SeqIO.write(seq,fout,'fasta')
 	#close file

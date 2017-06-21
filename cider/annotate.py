@@ -164,9 +164,9 @@ def annotate(settings,inputfile,logger):
 					rdata[record.id]['proteins'][key]['maxnucpos']=maxnucpos
 			
 	#write result
-	outputfile=settings['outputdir']+"/"+os.path.splitext(os.path.basename(inputfile))[0]+".json"
+	outputfile=settings['outputdir']+"/"+os.path.splitext(os.path.basename(inputfile))[0]
 	#print(json.dumps(rdata))
-	with open(outputfile,'w') as fout:
+	with open(outputfile+".json",'w') as fout:
 		json.dump(rdata,fout)
 	fout.close()
 

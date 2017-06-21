@@ -100,19 +100,22 @@ def main(configfile,inputfile,format,no_separation,no_alignment,no_deconcatenati
 			#perform separation step
 			from cider.separate import separate
 			genome,sepfile=separate(settings['separate'],record,logger)
-			tempfiles['separate'].append(sepfile)
+			tempfiles['separate'].append([genome,sepfile])
+			logger.debug(str(tempfiles))	
 		if not genome=='nohit':
 			if not no_alignment: 
 				#perorm alignment step
 				from cider.align import align
 				record,alignfile = align(settings['align'],record,genome,logger)
-				tempfiles['align'].append(alignfile)
+				tempfiles['align'].append([genome,alignfile])
+				logger.debug(str(tempfiles))
 			deconfile=''
 			if not no_deconcatenation:
 				#perform deconcaatenation step
 				from cider.deconcatenate import deconcatenate
 				deconfile=deconcatenate(settings['deconcat'],record,logger)
-				tempfiles['deconcat'].append(deconfile)
+				tempfiles['deconcat'].append([genome,deconfile])
+				logger.debug(str(tempfiles))
 			else:
 				deconfile=inputfile
 			annofile=''
@@ -120,40 +123,47 @@ def main(configfile,inputfile,format,no_separation,no_alignment,no_deconcatenati
 				#perform annotation step
 				from cider.annotate import annotate
 				annofile=annotate(settings['annotate'],deconfile+".fa",logger)
-				tempfiles['annotate'].append(annofile)
+				tempfiles['annotate'].append([genome,annofile])
+				logger.debug(str(tempfiles))
 			else:
 				annofile=inputfile
 				
 			if not no_phasing:
 				#perform phasing step
 				from cider.phase import phase
-				phasefile=phase(settings['phase'],genome,deconfile+".fa",annofile,logger)
-				tempfiles['phase'].append(phasefile)
+				phasefile=phase(settings['phase'],genome,deconfile+".fa",annofile+".json",logger)
+				tempfiles['phase'].append([genome,phasefile])
+				logger.debug(str(tempfiles))
+
 				
 	#join output-files 
 	for step in steps:
 		outfilename=settings[step]['outputdir']+"/"+os.path.splitext(os.path.basename(inputfile))[0]
 		if step=='separate' or step=='align':
 			#align,align,deconcat - fasta file
-			file_summary(step,tempfiles[step],outfilename+".fa","fasta",'')
+			file_summary(step,tempfiles[step],outfilename,"fasta",".fa")
 		elif step=='deconcat':
 			#align,align,deconcat - fasta file
-			file_summary(step,tempfiles[step],outfilename+".fa","fasta",'.fa')
+			file_summary(step,tempfiles[step],outfilename,"fasta",".fa")
 			if settings['deconcat']['statistics']==1:
-				file_summary('stat',tempfiles[step],outfilename+".stat","",'.stat')
+				file_summary('stat',tempfiles[step],outfilename,"",".stat")
 		elif step=='annotate':
 			#annotate - json file
-			file_summary(step,tempfiles[step],outfilename+".json","json",'')
+			file_summary(step,tempfiles[step],outfilename,"json",".json")
 		elif step=='phase':
 			for fformat in settings[step]['outputformat']:
-				file_summary(step,tempfiles[step],outfilename+"."+fformat,fformat,"."+fformat)
+				file_summary(step,tempfiles[step],outfilename,fformat,"."+fformat)
 
 #will summarize all detail files
 def file_summary(step,filelist,outfilename,fformat,ending):
 	#open output file handler
-	fout = open(outfilename,'wt')
-	annotation=[] #list for annotations to append and written at the end
-	for f in filelist:
+	annotation={}  #dictionary for annotations to append and written at the end
+	#cleanup
+	for g,f in filelist:
+		if os.path.isfile(outfilename+"."+g+ending):
+			os.remove(outfilename+"."+g+ending)
+	for g,f in filelist:
+		fout = open(outfilename+"."+g+ending,'at') #append
 		#read/write fasta file
 		if step=='separate' or step=='align' or step=='deconcat' or step=='phase':
 			#separate, align, deconcat, phase_fa = fasta file
@@ -163,7 +173,9 @@ def file_summary(step,filelist,outfilename,fformat,ending):
 		elif step=='annotate':
 			#annotate - json file
 			with open(f+ending) as ffile:
-				annotation.append(json.load(ffile))
+				if not g in annotation:
+					annotation[g]=[]
+				annotation[g].append(json.load(ffile))
 		elif step=='stat':
 			#concat simple ascii txt files
 			with open(f+ending) as ffile:
@@ -171,12 +183,16 @@ def file_summary(step,filelist,outfilename,fformat,ending):
 					fout.write(line)
 		#remove file
 		os.remove(f+ending)
+		#close outputfile-handler
+		fout.close
 	#dump annotation
 	if step=='annotate':
-		#dump json output
-		json.dump(annotation,fout)
-	#close outputfile-handler
-	fout.close()
+		for g in annotation:
+			fout = open(outfilename+"."+g+ending,'at') #append
+			#dump json output
+			json.dump(annotation,fout)
+			#close outputfile-handler
+			fout.close()
 
 if __name__ == '__main__':
 	

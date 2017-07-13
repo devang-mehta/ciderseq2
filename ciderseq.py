@@ -134,7 +134,6 @@ def main(configfile,inputfile,format,no_separation,no_alignment,no_deconcatenati
 				phasefile=phase(settings['phase'],genome,deconfile+".fa",annofile+".json",logger)
 				tempfiles['phase'].append([genome,phasefile])
 				logger.debug(str(tempfiles))
-
 				
 	#join output-files 
 	for step in steps:

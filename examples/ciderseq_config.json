@@ -19,18 +19,18 @@
 	"windowsize"	:	10
 },
 "deconcat":{
+	"outputdir"		:	"deconcat",
 	"muscleinit"	:	"",
 	"muscleexe"		:	"/opt/bin/muscle/muscle3.8.31_i86linux64",
 	"fragmentsize"	:	30,
-	"outputdir"		:	"deconcat",
 	"statistics"	:	1
 },
 "annotate":{
+	"outputdir"		:	"annotate",
 	"blastinit"		: 	"",
 	"blastexe"		:	"tblastn",
 	"tblastndb" 	:	"./examples/blastdb/ACMV_Proteins.fasta",
-	"evalue" 		:	0.01,
-	"outputdir"		:	"annotate"
+	"evalue" 		:	0.01
 },
 "phase":{
 	"outputdir"		:	"phased",

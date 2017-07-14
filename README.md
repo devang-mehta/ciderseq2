@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-<H1>CIDER-Seq Data Analysis Software</H1>
-=======
-# cider-seq
-<H1>CIDER-Seq (Circular DNA Enrichment Sequencing) data analysis software</H1>
->>>>>>> 5e5e6affd2d44bd6e20f80330c7adce8db7a41f3
+#CIDER-Seq Data Analysis Software
 
 This repository contains data analysis software for CIDER-Seq (Circular DNA Enrichment Sequencing) including an implementation of the **DeConcat** algorithm for sequence de-concatenation.
 
@@ -47,6 +42,7 @@ We also provide an optional `cider/cstools.py` script which assists with paralle
 
 <H2>Usage</H2>
 The primary run command is:
+
 `python ciderseq.py [options] [configfile] [inputfile]`
 
 The options allow the user to skip certain processes in the `ciderseq.py` pipeline:

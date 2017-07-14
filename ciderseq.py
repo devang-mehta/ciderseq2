@@ -35,8 +35,8 @@ from Bio import SeqIO
 #https://matplotlib.org/examples/statistics/histogram_demo_histtypes.html
 
 def main(configfile,inputfile,format,no_separation,no_alignment,no_deconcatenation,no_annotation,no_phasing):
-	print(configfile)
-	print(os.path.dirname(inputfile))
+	#print(configfile)
+	#print(os.path.dirname(inputfile))
 	
 	#read config file
 	settings={}
@@ -140,15 +140,15 @@ def main(configfile,inputfile,format,no_separation,no_alignment,no_deconcatenati
 		outfilename=settings[step]['outputdir']+"/"+os.path.splitext(os.path.basename(inputfile))[0]
 		if step=='separate' or step=='align':
 			#align,align,deconcat - fasta file
-			file_summary(step,tempfiles[step],outfilename,"fasta",".fa")
+			file_summary(step,tempfiles[step],outfilename,"fasta","fa")
 		elif step=='deconcat':
 			#align,align,deconcat - fasta file
-			file_summary(step,tempfiles[step],outfilename,"fasta",".fa")
+			file_summary(step,tempfiles[step],outfilename,"fasta","fa")
 			if settings['deconcat']['statistics']==1:
-				file_summary('stat',tempfiles[step],outfilename,"",".stat")
+				file_summary('stat',tempfiles[step],outfilename,"","stat")
 		elif step=='annotate':
 			#annotate - json file
-			file_summary(step,tempfiles[step],outfilename,"json",".json")
+			file_summary(step,tempfiles[step],outfilename,"json","json")
 		elif step=='phase':
 			for fformat in settings[step]['outputformat']:
 				file_summary(step,tempfiles[step],outfilename,fformat,"."+fformat)
@@ -159,37 +159,37 @@ def file_summary(step,filelist,outfilename,fformat,ending):
 	annotation={}  #dictionary for annotations to append and written at the end
 	#cleanup
 	for g,f in filelist:
-		if os.path.isfile(outfilename+"."+g+ending):
-			os.remove(outfilename+"."+g+ending)
+		if os.path.isfile(outfilename+"."+g+"."+ending):
+			os.remove(outfilename+"."+g+"."+ending)
 	for g,f in filelist:
-		fout = open(outfilename+"."+g+ending,'at') #append
+		fout = open(outfilename+"."+g+"."+ending,'at') #append
 		#read/write fasta file
 		if step=='separate' or step=='align' or step=='deconcat' or step=='phase':
 			#separate, align, deconcat, phase_fa = fasta file
-			for record in SeqIO.parse(f+ending, fformat):
+			for record in SeqIO.parse(f+"."+ending, fformat):
 				SeqIO.write(record,fout,fformat)
 		#read json file
 		elif step=='annotate':
 			#annotate - json file
-			with open(f+ending) as ffile:
+			with open(f+"."+ending) as ffile:
 				if not g in annotation:
 					annotation[g]=[]
 				annotation[g].append(json.load(ffile))
 		elif step=='stat':
 			#concat simple ascii txt files
-			with open(f+ending) as ffile:
+			with open(f+"."+ending) as ffile:
 				for line in ffile:
 					fout.write(line)
 		#remove file
-		os.remove(f+ending)
+		os.remove(f+"."+ending)
 		#close outputfile-handler
 		fout.close
 	#dump annotation
 	if step=='annotate':
 		for g in annotation:
-			fout = open(outfilename+"."+g+ending,'at') #append
+			fout = open(outfilename+"."+g+"."+ending,'at') #append
 			#dump json output
-			json.dump(annotation,fout)
+			json.dump(annotation[g],fout)
 			#close outputfile-handler
 			fout.close()
 

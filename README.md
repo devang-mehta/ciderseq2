@@ -1,8 +1,6 @@
-# cider-seq
-<H1>CIDER-Seq (**Ci**rcular **D**NA **E**n**r**ichment )
-**Seq**uencing) data analysis software</H1>
+<H1>CIDER-Seq Data Analysis Software</H1>
 
-This repository contains data analysis software for CIDER-Seq and a standalone implementation of the **DeConcat** algorithm for sequence de-concatenation.
+This repository contains data analysis software for CIDER-Seq (Circular DNA Enrichment Sequencing) including an implementation of the **DeConcat** algorithm for sequence de-concatenation.
 
 <H4>Reference:</H4>
 
@@ -18,6 +16,7 @@ Mehta D, Hirsch-Hoffmann M, Gruissem W, Vanderschuren H (2017) CIDER-Seq: unbias
 
 * [Biopython](https://www.biopython.org)
 * [Click](http://click.pocoo.org/5/)
+* [Matplotlib](https://matplotlib.org/)
 
 <H4>Standard modules:</H4>
 
@@ -39,10 +38,29 @@ The primary `ciderseq.py` script runs a pipeline on input sequence data consisti
 
 *Note that `annotate.py` and `phase.py` are designed to deal with circular DNA sequences*
 
+We also provide an optional `cider/cstools.py` script which assists with parallel computing and also generates performance plots.
+
+<H2>Usage</H2>
+The primary run command is:
+`python ciderseq.py [options] [configfile] [inputfile]`
+
+The options allow the user to skip certain processes in the `ciderseq.py` pipeline:
+```
+--no-separation
+--no-alignment
+--no-deconcatenation
+--no-annotation
+--no-phasing
+```
+
+<H4>Input Files</H4>
+
+<H4>Output Files</H4>
+
 <H2>Config File</H2>
 
-see `examples/ciderseq_config.json` for an example
-Please create config by specifying the values in the explanation below in "".
+see `examples/ciderseq_config.json` for an example.
+We recommend using `examples/ciderseq_config.json` for your analysis and
 
 <H4>Explanation of name/value pairs:</H4>
 * loglevel : "DEBUG", will write log information into output dir
@@ -90,4 +108,5 @@ Please create config by specifying the values in the explanation below in "".
  * phaseto : "name of protein to set sequence start position"
  * offset : (offset to start before protein position) if "10", phaseto protein will start at position 10
 
-<H2>Examples</H2>
+<H2>References</H2>
+Hunter JD (2007) Matplotlib: A 2D graphics environment. Computing in Science & Engineering 9:3 90-95 doi:[10.5281/zenodo/573577](https://zenodo.org/record/573577#.WWjXm9N96L4)

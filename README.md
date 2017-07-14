@@ -124,4 +124,4 @@ We recommend using `examples/ciderseq_config.json` for your analysis and
  * offset : (offset to start before protein position) if "10", phaseto protein will start at position 10
 
 <H2>References</H2>
-Hunter JD (2007) Matplotlib: A 2D graphics environment. Computing in Science & Engineering 9:3 90-95 doi:[10.5281/zenodo/573577](https://zenodo.org/record/573577#.WWjXm9N96L4)
+Hunter JD (2007) Matplotlib: A 2D graphics environment. Computing in Science & Engineering 9:3 90-95 doi: [10.5281/zenodo/573577](https://zenodo.org/record/573577#.WWjXm9N96L4)

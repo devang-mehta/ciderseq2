@@ -54,6 +54,17 @@ The options allow the user to skip certain processes in the `ciderseq.py` pipeli
 --no-phasing
 ```
 
+Additionally, the option `--format` allows you to choose the format of your input file from either fasta, fastq, tab or gb. The default option is fasta.
+
+ For example, for processing the files in `examples/` we run:
+ `python ciderseq.py --format='fastq' /examples/ciderseq_config.json /examples/example1.fastq`
+
+If we run:
+`python ciderseq.py --format='fastq' --no-separation --no-alignment /examples/ciderseq_config.json /examples/example1.fastq`
+the Separation and Alignment steps [described above](#structure) will be skipped.
+
+Run `python ciderseq.py --help` for a brief description of usage and options.
+
 <H4>Input Files</H4>
 
 <H4>Output Files</H4>

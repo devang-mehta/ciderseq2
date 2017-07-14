@@ -1,6 +1,5 @@
 # cider-seq
-<H1>CIDER-Seq (**Ci**rcular **D**NA **E**n**r**ichment )
-**Seq**uencing) data analysis software</H1>
+<H1>CIDER-Seq (Circular DNA Enrichment Sequencing) data analysis software</H1>
 
 This repository contains data analysis software for CIDER-Seq and a standalone implementation of the **DeConcat** algorithm for sequence de-concatenation.
 

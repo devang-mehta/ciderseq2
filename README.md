@@ -27,6 +27,8 @@ Mehta D, Hirsch-Hoffmann M, Gruissem W, Vanderschuren H (2017) CIDER-Seq: unbias
 * uuid
 * json
 
+<H2>Installation</H2>
+
 <H2>Structure</H2>
 
 The primary `ciderseq.py` script runs a pipeline on input sequence data consisting of the following process modules in order:

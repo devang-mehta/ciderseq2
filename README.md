@@ -77,7 +77,7 @@ Run `python ciderseq.py --help` for a brief description of usage and options.
 <H2>Config File</H2>
 
 see `examples/ciderseq_config.json` for an example.
-We recommend using `examples/ciderseq_config.json` for your analysis and
+We recommend using `examples/ciderseq_config.json` and editing the values for your analysis.
 
 <H4>Explanation of name/value pairs:</H4>
 * loglevel : "DEBUG", will write log information into output dir

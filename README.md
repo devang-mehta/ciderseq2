@@ -29,6 +29,8 @@ Mehta D#, Hirsch-Hoffmann M, Patrignani A, Gruissem W, Vanderschuren H (2017) CI
 
 <H2>Installation</H2>
 
+
+
 <H2>Structure</H2>
 
 The primary `ciderseq.py` script runs a pipeline on input sequence data consisting of the following process modules in order:
@@ -74,12 +76,16 @@ Run `python ciderseq.py --help` for a brief description of usage and options.
 
 There are only two input files required:
 
-* inputfile: file containing your raw sequence data in a Seq.IO compatible format (fasta, fastq, tab, gb)
+* `inputfile`: file containing your raw sequence data in a Seq.IO compatible format (fasta, fastq, tab, gb)
 
-* configfile: file containing editable parameters to customise your CIDER-Seq run. (see [below](#config-file) for details)
-
+* `configfile`: file containing editable parameters to customise your CIDER-Seq run. (see [below](#config-file) for details)
 
 <H3>Output Files</H3>
+
+All output files are saved in the directory specified in the `configfile`.
+We recommend you create separate folders for each step defined in the `configfile`.
+
+See our example file `examples/ciderseq_config.json` for details.
 
 <H2>Config File</H2>
 
@@ -134,5 +140,4 @@ We recommend using `examples/ciderseq_config.json` and editing the values for yo
 
 <H2>References</H2>
 Hunter JD (2007) Matplotlib: A 2D graphics environment. Computing in Science & Engineering 9:3 90-95
-
 doi:[10.5281/zenodo/573577](https://zenodo.org/record/573577#.WWjXm9N96L4)

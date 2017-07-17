@@ -42,9 +42,14 @@ The primary `ciderseq.py` script runs a pipeline on input sequence data consisti
 
 *Note that `annotate.py` and `phase.py` are designed to deal with circular DNA sequences*
 
-We also provide an optional `cider/cstools.py` script which assists with parallel computing and also generates performance plots.
 
 <H2>Usage</H2>
+
+For regular users we recommend you ask your SMRT sequencing service provider to install CIDER-Seq on their computing cluster. If you have access to your own cluster or wish to process only a small dataset read on:
+
+
+<H3>For small datasets, or manual job handling:</H3>
+
 The primary run command is:
 
 `python ciderseq.py [options] [configfile] [inputfile]`
@@ -71,6 +76,43 @@ If we run:
 the Separation and Alignment steps [described above](#structure) will be skipped.
 
 Run `python ciderseq.py --help` for a brief description of usage and options.
+
+<H3>For large datasets</H3>
+
+We provide `cstools.py` in order to process large sequence datasets on a computing cluster (similar to the one your SMRT Analysis software is installed on). `cstools.py` is basically a file-handling program which will allow you to split your input sequences into batches and then join the outputs into a single results directory.
+
+To run:
+
+`python cstools.py [options] [inputfile] [configfile] [action]`
+
+The `inputfile` and `configfile` are the same as the ones used by `ciderseq.py`. See [below](#input-files) for details.
+
+**Options:**
+```
+--format
+--numseq
+--cluster
+--clean
+```
+`numseq`: is the number of sequences in a single batch. The default is 1 (each sequence is processed independently).
+`cluster`:
+`clean`: if absent, the folders with the split data will not be deleted. Useful for debugging.
+
+**Actions**
+
+`cstools.py` has two primary actions: `split` and `join` which split input files into several jobs and then join the split jobs once processed. A third action called `chart` can be run after processing to produce DeConcat statistics. See `examples/plots` for examples of each chart.
+
+**Typical Usage**
+
+The typical run command is:
+
+`python cstools.py --format='fastq' --numseq='10' --cluster='bsub' --clean /examples/example1.fastq /examples/ciderseq_config.json action=split`
+
+followed by (for joining):
+`python cstools.py --format='fastq' --cluster='bsub' --clean /examples/example1.fastq /examples/ciderseq_config.json action=join`
+
+And (for plotting):
+`python cstools.py --format='fastq' --cluster='bsub' --clean /examples/example1.fastq /examples/ciderseq_config.json action=chart`
 
 <H3>Input Files</H3>
 

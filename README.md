@@ -4,7 +4,7 @@ This repository contains data analysis software for CIDER-Seq (Circular DNA Enri
 
 <H4>Reference:</H4>
 
-Mehta D, Hirsch-Hoffmann M, Gruissem W, Vanderschuren H (2017) CIDER-Seq: unbiased virus enrichment and single-read, full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
+Mehta D, Hirsch-Hoffmann M, Patrignani A, Gruissem W, Vanderschuren H (2017) CIDER-Seq: unbiased virus enrichment and single-read, full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
 
 <H2>System requirements</H2>
 

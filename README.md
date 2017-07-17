@@ -70,7 +70,7 @@ the Separation and Alignment steps [described above](#structure) will be skipped
 
 Run `python ciderseq.py --help` for a brief description of usage and options.
 
-<H4>Input Files</H4>
+<H3>Input Files</H3>
 
 There are only two input files required:
 
@@ -79,14 +79,14 @@ There are only two input files required:
 * configfile: file containing editable parameters to customise your CIDER-Seq run. (see [below](#config-file) for details)
 
 
-<H4>Output Files</H4>
+<H3>Output Files</H3>
 
 <H2>Config File</H2>
 
 see `examples/ciderseq_config.json` for an example.
 We recommend using `examples/ciderseq_config.json` and editing the values for your analysis.
 
-<H4>Explanation of name/value pairs:</H4>
+<H3>Explanation of name/value pairs:</H3>
 * loglevel : "DEBUG", will write log information into output dir
 * outputdir : "destination of log information"
 * separate (settings used in `cider/separate.py`)

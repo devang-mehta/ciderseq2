@@ -72,6 +72,13 @@ Run `python ciderseq.py --help` for a brief description of usage and options.
 
 <H4>Input Files</H4>
 
+There are only two input files required:
+
+* inputfile: file containing your raw sequence data in a Seq.IO compatible format (fasta, fastq, tab, gb)
+
+* configfile: file containing editable parameters to customise your CIDER-Seq run. (see [below](#config-file) for details)
+
+
 <H4>Output Files</H4>
 
 <H2>Config File</H2>

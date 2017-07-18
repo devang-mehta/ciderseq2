@@ -20,6 +20,8 @@ from Bio import SeqIO
 #*************** ARGUMENETS *****************************
 #action
 @click.argument('action', type=click.Choice(['split','join','chart']))
+#config-file
+@click.argument('configfile', type=click.Path(exists=True,readable=True))
 #input-file
 @click.argument('inputfile', type=click.Path(exists=True,readable=True))
 
@@ -27,11 +29,10 @@ from Bio import SeqIO
 #input-filetype
 @click.option('--format', default='fasta', type=click.Choice(['fasta','fastq','tab','gb']), help='Input-file format (default=FASTA).')
 @click.option('--numseq', default=1, type=click.INT , help='number of sequences per split-file.')
-@click.option('--configfile', type=click.Path(exists=True) , help='config-file name.')
 @click.option('--cluster', default='', type=click.STRING , help='Cluster command.')
 @click.option('--clean', is_flag=True, help='will cleanup split folder.')
 
-def main(action,inputfile,format,numseq,configfile,cluster,clean):
+def main(action,configfile,inputfile,format,numseq,cluster,clean):
 ########################################################################################################								
 	if action=='split':
 		if not os.path.exists(inputfile+".dir"):
@@ -58,7 +59,7 @@ def main(action,inputfile,format,numseq,configfile,cluster,clean):
 			output(outputfile,configfile,cluster)
 			#create output of all filenames	as execution command e.g. python ./ciderseq.py <options> <configfile> <filename>  
 		else:
-			print('Output directory already exists.')
+			print('Output directory already exists. Use \'rm -rf '+inputfile+'.dir\' to remove split-target directory.')
 ########################################################################################################								
 	elif action=='join':
 		if not os.path.exists(inputfile+".dir"):

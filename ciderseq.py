@@ -151,7 +151,7 @@ def main(configfile,inputfile,format,no_separation,no_alignment,no_deconcatenati
 			file_summary(step,tempfiles[step],outfilename,"json","json")
 		elif step=='phase':
 			for fformat in settings[step]['outputformat']:
-				file_summary(step,tempfiles[step],outfilename,fformat,"."+fformat)
+				file_summary(step,tempfiles[step],outfilename,fformat,fformat)
 
 #will summarize all detail files
 def file_summary(step,filelist,outfilename,fformat,ending):

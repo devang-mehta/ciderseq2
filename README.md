@@ -3,7 +3,26 @@
 This repository contains data analysis software for CIDER-Seq (Circular DNA Enrichment Sequencing) including an implementation 
 of the **DeConcat** algorithm for sequence de-concatenation.
 
-[toc]
+## Table of content
+
+  * [Reference](#reference)
+  * [Prerequisites](#prerequisites)
+    + [Python Modules](#python-modules)
+    + [Standard modules:](#standard-modules-)
+  * [Installation](#installation)
+  * [Structure](#structure)
+  * [Usage](#usage)
+    + [For small datasets, or manual job handling](#for-small-datasets--or-manual-job-handling)
+      - [Options](#options)
+    + [For large datasets](#for-large-datasets)
+      - [Options](#options-1)
+      - [Actions](#actions)
+      - [Typical Usage](#typical-usage)
+  * [Input Files](#input-files)
+  * [Output Files](#output-files)
+  * [Config File](#config-file)
+    + [Explanation of name/value pairs](#explanation-of-name-value-pairs)
+  * [References](#references)
 
 ## Reference
 

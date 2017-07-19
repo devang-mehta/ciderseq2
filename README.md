@@ -181,7 +181,7 @@ We recommend you create separate folders for each step defined in the `CONFIGFIL
 
 See our example file `examples/ciderseq_config.json` for details.
 
-## Config FileÂ
+## Config File
 
 `ciderseq.py` reads configuration parameters from the provided `CONFIGFILE`.
 see `examples/ciderseq_config.json` for an example.

@@ -31,7 +31,7 @@ full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
 
 ## Prerequisites
 
-See [a relative link](how_to_python_macOS.md) for a brief guide to installing the following:
+See [How to python macOS](how_to_python_macOS.md) for a brief guide to installing the following:
 
 * Python 3
 * [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE:BlastDocs&DOC_TYPE:Download "BLAST download page")

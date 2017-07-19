@@ -195,26 +195,47 @@ Essential changes that you will almost certainly need to make are **highlighted 
 
 **Overall Settings**
 
+
 ![alt-text][image1]
 
 
 **Configuring `separate.py`:**
 
+
 ![alt-text][image2]
 
-**Configuring `align.py`**
+
+**Configuring `align.py`:**
+
 
 ![alt-text][image3]
 
+
+**Configuring `deconcat.py`:**
+
+
 ![alt-text][image4]
+
+
+**Configuring `annotate.py`:**
+
 
 ![alt-text][image5]
 
+
+**Configuring `phase.py`:**
+
+
 ![alt-text][image6]
+
+
+**Configuring Phasing:**
+
 
 ![alt-text][image7]
 
-### Explanation of name/value pairs
+
+### A more detailed explanation of name/value pairs
 
 * loglevel : "DEBUG", will write log information into output dir
 * outputdir : "destination of log information"

@@ -9,7 +9,7 @@ of the **DeConcat** algorithm for sequence de-concatenation.
   * [Prerequisites](#prerequisites)
     + [Python Modules](#python-modules)
     + [Standard modules:](#standard-modules-)
-  * [Installation](#installation)
+  * [Installation](#cider-seq-installation)
   * [Structure](#structure)
   * [Usage](#usage)
     + [For small datasets, or manual job handling](#for-small-datasets--or-manual-job-handling)
@@ -57,7 +57,7 @@ The following are minimal steps to install the package after prerequisites are f
 
 1. Clone this Git repository onto your machine.
 2. Create a copy of configuration file `examples/ciderseq_config.json`.
-3. Edit the configuration file and set all necessary parameters (see [Config File](config-file))
+3. Edit the configuration file and set all necessary parameters (see [Config File](#config-file))
 4. Run `ciderseq` example (see [Usage](#usage))
 
 

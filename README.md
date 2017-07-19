@@ -119,13 +119,13 @@ Run `python ciderseq.py --help` for a brief description of usage and options.
 
 ### For large datasets
 
-We provide `cstool.py` in order to process large sequence datasets on a computing cluster (similar to the one your SMRT Analysis software
-is installed on). `cstool.py` is basically a file-handling program which will allow you to `split` your input sequences into batches
+We provide `cstools.py` in order to process large sequence datasets on a computing cluster (similar to the one your SMRT Analysis software
+is installed on). `cstools.py` is basically a file-handling program which will allow you to `split` your input sequences into batches
 and then `join` the outputs into a single results directory.
 
 To run:
 
-`python cstool.py [options] ACTION CONFIGFILE INPUTFILE`
+`python cstools.py [options] ACTION CONFIGFILE INPUTFILE`
 
 The `CONFIGFILE` and `INPUTFILE` are the same as the ones used by `ciderseq.py`. See [below](#input-files) for details.
 
@@ -149,25 +149,25 @@ The `CONFIGFILE` and `INPUTFILE` are the same as the ones used by `ciderseq.py`.
 
 #### Actions
 
-`cstool.py` has two primary actions: `split` and `join` which split input files into several jobs and then join the split jobs once
+`cstools.py` has two primary actions: `split` and `join` which split input files into several jobs and then join the split jobs once
 processed. A third action called `chart` can be run after processing to produce DeConcat statistics. See `examples/plots` for examples of each chart.
 
 #### Typical Usage
 
 The typical run command is:
 
-`python cstool.py --format fastq --numseq 10 --cluster "bsub -n 4" split examples/ciderseq_config.json examples/example1.fastq`
+`python cstools.py --format fastq --numseq 10 --cluster "bsub -n 4" split examples/ciderseq_config.json examples/example1.fastq`
 
 >The `split` command outputs all necessary execution commands without executing them.
 
 
 followed by (for joining):
-`python cstool.py --clean join examples/ciderseq_config.json examples/example1.fastq`
+`python cstools.py --clean join examples/ciderseq_config.json examples/example1.fastq`
 
 >The `clean` option will remove the folder and files crated during **split**.
 
 And (for plotting):
-`python cstool.py chart examples/ciderseq_config.json examples/example1.fastq`
+`python cstools.py chart examples/ciderseq_config.json examples/example1.fastq`
 
 ## Input Files
 

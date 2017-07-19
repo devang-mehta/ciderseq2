@@ -56,4 +56,4 @@ for example:
 python3 ciderseq.py --format fastq examples/ciderseq_config.json examples/example1.fastq
 ```
 
-will run ciderseq using Python 3, even if you have Python 2 also installed. 
+will run `ciderseq` using Python 3, even if you have Python 2 also installed. 

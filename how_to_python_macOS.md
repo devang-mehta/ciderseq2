@@ -13,7 +13,7 @@ To install, simply open your Terminal and type:
 
 ## Install Python 3
 
-Open Terminal and type:
+Once you have Homebrew installed, open Terminal and type:
 
 ```
 brew install python3

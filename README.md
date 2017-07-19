@@ -189,6 +189,7 @@ see `examples/ciderseq_config.json` for an example.
 Please read on for a detailed explanation of how to edit the `CONFIGFILE` file:
 
 **Configuring `separate.py`:**
+
 ![alt-text][image1]
 
 

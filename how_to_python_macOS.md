@@ -1,4 +1,4 @@
-# HOW TO INSTALL PYTHON 3 and Required Modules on macOS X
+# How to install PYTHON 3 and Required Modules on macOS X
 
 A detailed guide on our favorite way to locally install Python and the required packages on your macOS X machine. 
 

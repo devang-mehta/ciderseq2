@@ -181,12 +181,14 @@ We recommend you create separate folders for each step defined in the `CONFIGFIL
 
 See our example file `examples/ciderseq_config.json` for details.
 
-## Config File
+## Config FileÂ
 
 `ciderseq.py` reads configuration parameters from the provided `CONFIGFILE`.
 see `examples/ciderseq_config.json` for an example.
 
 Please read on for a detailed explanation of how to edit the `CONFIGFILE` file:
+
+**We recommend using `examples/ciderseq_config.json` and editing the values for your analysis.**
 
 There are several options available to modify in the `CONFIGFILE`.
 Essential changes that you will almost certainly need to make are **highlighted in green** in the images below.
@@ -200,10 +202,17 @@ Essential changes that you will almost certainly need to make are **highlighted 
 
 ![alt-text][image2]
 
+**Configuring `align.py`**
 
+![alt-text][image3]
 
-We recommend using `examples/ciderseq_config.json` and editing the values for your analysis.
+![alt-text][image4]
 
+![alt-text][image5]
+
+![alt-text][image6]
+
+![alt-text][image7]
 
 ### Explanation of name/value pairs
 

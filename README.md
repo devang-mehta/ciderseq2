@@ -3,7 +3,7 @@
 This repository contains data analysis software for CIDER-Seq (Circular DNA Enrichment Sequencing) including an implementation 
 of the **DeConcat** algorithm for sequence de-concatenation.
 
-## Table of content
+## Table of contents
 
   * [Reference](#reference)
   * [Prerequisites](#prerequisites)

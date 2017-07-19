@@ -191,6 +191,7 @@ Please read on for a detailed explanation of how to edit the `CONFIGFILE` file:
 **We recommend using `examples/ciderseq_config.json` and editing the values for your analysis.**
 
 There are several options available to modify in the `CONFIGFILE`.
+
 Essential changes that you will almost certainly need to make are **highlighted in green** in the images below.
 
 **Overall Settings**

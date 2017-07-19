@@ -31,6 +31,8 @@ full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
 
 ## Prerequisites
 
+See `/how_to_python_macOS.md` for a brief guide to installing the following:
+
 * Python 3
 * [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE:BlastDocs&DOC_TYPE:Download "BLAST download page")
 * [MUSCLE](http://www.drive5.com/muscle/ "MUSCLE homepage")
@@ -50,7 +52,7 @@ full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
 * uuid
 * json
 
-## Installation
+## CIDER-Seq Installation
 The following are minimal steps to install the package after prerequisites are fulfilled:
 
 1. Clone this Git repository onto your machine.

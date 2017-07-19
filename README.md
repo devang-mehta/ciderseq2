@@ -183,12 +183,13 @@ See our example file `examples/ciderseq_config.json` for details.
 
 ## Config File
 
-`ciderseq.py` reads configuration parameters from provided `CONFIGFILE`. The `CONFIGFILE` is written in JSON format.
-
+`ciderseq.py` reads configuration parameters from the provided `CONFIGFILE`.
 see `examples/ciderseq_config.json` for an example.
-Below is an example `ciderseq_config.json` file, which should get the `ciderseq.py` command running if blast- and 
-muscle-executables are in the `$PATH` environment variable. For details, check the below list for all available 
-configuration name/value pairs.
+
+Please read on for a detailed explanation of how to edit the `CONFIGFILE` file:
+
+**Configuring `separate.py`:**
+![separate][image1]
 
 ```
 {
@@ -305,3 +306,11 @@ We recommend using `examples/ciderseq_config.json` and editing the values for yo
 ## References
 Hunter JD (2007) Matplotlib: A 2D graphics environment. Computing in Science & Engineering 9:3 90-95
 doi:[10.5281/zenodo/573577](https://zenodo.org/record/573577#.WWjXm9N96L4)
+
+[image1](https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq.png)
+[image2](https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq%202.png)
+[image3](https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq%203.png)
+[image4](https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq%204.png)
+[image5](https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq%205.png)
+[image6](https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq%206.png)
+[image7](https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq%207.png)

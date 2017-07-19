@@ -189,72 +189,8 @@ see `examples/ciderseq_config.json` for an example.
 Please read on for a detailed explanation of how to edit the `CONFIGFILE` file:
 
 **Configuring `separate.py`:**
-![image1][separate]
+![alt-text][image1]
 
-```
-{
-"loglevel"		:	"DEBUG",
-"outputdir"		:	"logs",
-"separate":{
-	"outputdir"		:	"separate",
-	"blastinit"		: 	"",
-	"blastexe"		:	"blastn",
-	"blastndb"		: 	"./examples/blastdb/EACMV_RefSeq.fasta",
-	"evalue"		: 	1
-},
-"align":{
-	"outputdir"		:	"align",
-	"muscleinit"	:	"",
-	"muscleexe"		:	"muscle",
-	"targets"		:	{
-		"EACMV_DNA_A"	:	"./examples/blastdb/EACMV_DNA_A.fa",
-		"EACMV_DNA_B"	:	"./examples/blastdb/EACMV_DNA_B.fa"
-	},
-	"windowsize"	:	10
-},
-"deconcat":{
-	"outputdir"		:	"deconcat",
-	"muscleinit"	:	"",
-	"muscleexe"		:	"muscle",
-	"fragmentsize"	:	30,
-	"statistics"	:	1
-},
-"annotate":{
-	"outputdir"		:	"annotate",
-	"blastinit"		: 	"",
-	"blastexe"		:	"tblastn",
-	"tblastndb" 	:	"./examples/blastdb/ACMV_Proteins.fasta",
-	"evalue" 		:	0.01
-},
-"phase":{
-	"outputdir"		:	"phased",
-	"outputformat"	:	["genbank","fasta"],
-	"phasegenomes":{
-		"EACMV_DNA_A"	:	{
-			"proteins" 	:	{
-				"AC1"	:	{"strand"	:	-1},
-				"AC2"	:	{"strand"	:	-1},
-				"AC3"	:	{"strand"	:	-1},
-				"AC4"	:	{"strand"	:	-1},
-				"AC5"	:	{"strand"	:	-1},
-				"AV1"	:	{"strand"	:	1},
-				"AV2"	:	{"strand"	:	1}
-			},
-			"phaseto" 	: 	"AV2"
-			,"offset"	:	10
-		},
-		"EACMV_DNA_B"	: 	{ 
-			"proteins" 	: 	{
-				"BC1"	:	{"strand"	:	1},
-				"BV1"	:	{"strand"	:	-1}
-			},
-			"phaseto" 	: 	"BC1",
-			"offset"	:	10
-		}
-	}
-}
-}
-```
 
 We recommend using `examples/ciderseq_config.json` and editing the values for your analysis.
 

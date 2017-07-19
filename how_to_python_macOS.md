@@ -19,7 +19,7 @@ Open Terminal and type:
 brew install python3
 ```
 
-## Install module
+## Install modules
 
 Open Terminal and type:
 

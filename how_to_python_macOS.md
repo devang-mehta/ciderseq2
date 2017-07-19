@@ -2,7 +2,7 @@
 
 A detailed guide on our favorite way to locally install Python and the required packages on your macOS X machine. 
 
-##Install Homebrew##
+## Install Homebrew
 
 Homebrew is a package manager for macOS, much like `apt-get` on Linux.
 
@@ -11,7 +11,7 @@ To install, simply open your Terminal and type:
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-##Install Python 3##
+## Install Python 3
 
 Open Terminal and type:
 
@@ -19,7 +19,7 @@ Open Terminal and type:
 brew install python3
 ```
 
-##Install modules##
+## Install module
 
 Open Terminal and type:
 

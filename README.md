@@ -1,6 +1,6 @@
 # CIDER-Seq Data Analysis Software
 
-This repository contains data analysis software for CIDER-Seq (Circular DNA Enrichment Sequencing) including an implementation 
+This repository contains data analysis software for CIDER-Seq (Circular DNA Enrichment Sequencing) including an implementation
 of the **DeConcat** algorithm for sequence de-concatenation.
 
 ## Table of contents
@@ -26,7 +26,7 @@ of the **DeConcat** algorithm for sequence de-concatenation.
 
 ## Reference
 
-Mehta D, Hirsch-Hoffmann M, Patrignani A, Gruissem W, Vanderschuren H (2017) CIDER-Seq: unbiased virus enrichment and single-read, 
+Mehta D, Hirsch-Hoffmann M, Patrignani A, Gruissem W, Vanderschuren H (2017) CIDER-Seq: unbiased virus enrichment and single-read,
 full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
 
 ## Prerequisites
@@ -78,7 +78,7 @@ The primary `ciderseq.py` script runs a pipeline on input sequence data consisti
 
 ## Usage
 
-For regular users we recommend you ask your SMRT sequencing service provider to install CIDER-Seq on their computing cluster. 
+For regular users we recommend you ask your SMRT sequencing service provider to install CIDER-Seq on their computing cluster.
 If you have access to your own cluster or wish to process only a small dataset read on:
 
 
@@ -116,8 +116,8 @@ Run `python ciderseq.py --help` for a brief description of usage and options.
 
 ### For large datasets
 
-We provide `cstool.py` in order to process large sequence datasets on a computing cluster (similar to the one your SMRT Analysis software 
-is installed on). `cstool.py` is basically a file-handling program which will allow you to `split` your input sequences into batches 
+We provide `cstool.py` in order to process large sequence datasets on a computing cluster (similar to the one your SMRT Analysis software
+is installed on). `cstool.py` is basically a file-handling program which will allow you to `split` your input sequences into batches
 and then `join` the outputs into a single results directory.
 
 To run:
@@ -139,14 +139,14 @@ The `CONFIGFILE` and `INPUTFILE` are the same as the ones used by `ciderseq.py`.
 
 >`numseq`: is the number of sequences in a single batch. The default is 1 (each sequence is processed independently).
 
->`cluster`: contains cluster submission parameters, e.g. `"bsub -n 4"` in a LSF environment. 
+>`cluster`: contains cluster submission parameters, e.g. `"bsub -n 4"` in a LSF environment.
 
 >`clean`: if absent, the folders with the split data will not be deleted. Useful for debugging.
 
 
 #### Actions
 
-`cstool.py` has two primary actions: `split` and `join` which split input files into several jobs and then join the split jobs once 
+`cstool.py` has two primary actions: `split` and `join` which split input files into several jobs and then join the split jobs once
 processed. A third action called `chart` can be run after processing to produce DeConcat statistics. See `examples/plots` for examples of each chart.
 
 #### Typical Usage
@@ -188,9 +188,18 @@ see `examples/ciderseq_config.json` for an example.
 
 Please read on for a detailed explanation of how to edit the `CONFIGFILE` file:
 
-**Configuring `separate.py`:**
+There are several options available to modify in the `CONFIGFILE`.
+Essential changes that you will almost certainly need to make are **highlighted in green** in the images below.
+
+**Overall Settings**
 
 ![alt-text][image1]
+
+
+**Configuring `separate.py`:**
+
+![alt-text][image2]
+
 
 
 We recommend using `examples/ciderseq_config.json` and editing the values for your analysis.
@@ -235,7 +244,7 @@ We recommend using `examples/ciderseq_config.json` and editing the values for yo
   * phasegenomes : (array of genomes for phasing)
      * "name of genome" : (array of phasing parameters)
          * proteins : array of proteins in genome
-             * "name of protein" : (protein strand information) 
+             * "name of protein" : (protein strand information)
                  * "strand" : "1"=forward strand, "-1"=reverse strand"  
          * phaseto : "name of protein to set sequence start position"
          * offset : (offset to start before protein position) if "10", phaseto protein will start at position 10

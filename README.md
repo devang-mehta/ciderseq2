@@ -3,9 +3,14 @@
 This repository contains data analysis software for CIDER-Seq (Circular DNA Enrichment Sequencing) including an implementation
 of the **DeConcat** algorithm for sequence de-concatenation.
 
+## Please cite:
+
+Mehta D, Hirsch-Hoffmann M, Patrignani A, Gruissem W, Vanderschuren H (2017) CIDER-Seq: unbiased virus enrichment and single-read,
+full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
+
+
 ## Table of contents
 
-  * [Reference](#reference)
   * [Prerequisites](#prerequisites)
     + [Python Modules](#python-modules)
     + [Standard modules:](#standard-modules-)
@@ -24,10 +29,6 @@ of the **DeConcat** algorithm for sequence de-concatenation.
     + [Explanation of name/value pairs](#explanation-of-name-value-pairs)
   * [References](#references)
 
-## Reference
-
-Mehta D, Hirsch-Hoffmann M, Patrignani A, Gruissem W, Vanderschuren H (2017) CIDER-Seq: unbiased virus enrichment and single-read,
-full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
 
 ## Prerequisites
 

@@ -13,7 +13,7 @@ full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
 
   * [Prerequisites](#prerequisites)
     + [Python Modules](#python-modules)
-    + [Standard modules:](#standard-modules-)
+    + [Standard Modules:](#standard-modules)
   * [Installation](#cider-seq-installation)
   * [Structure](#structure)
   * [Usage](#usage)
@@ -31,6 +31,7 @@ full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
 
 
 ## Prerequisites
+(All of the following are essential to run CIDER-Seq)
 
 See [How to python macOS](how_to_python_macOS.md) for a brief guide to installing the following:
 
@@ -44,8 +45,8 @@ See [How to python macOS](how_to_python_macOS.md) for a brief guide to installin
 * [Click](http://click.pocoo.org/5/)
 * [Matplotlib](https://matplotlib.org/)
 
-### Standard modules:
-
+### Standard Modules:
+(Should come pre-installed with Python)
 * sys
 * os
 * logging

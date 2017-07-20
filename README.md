@@ -90,7 +90,9 @@ If you have access to your own cluster or wish to process only a small dataset r
 
 The primary run command is:
 
-`python ciderseq.py [options] CONFIGFILE INPUTFILE`
+```
+python ciderseq.py [options] CONFIGFILE INPUTFILE
+```
 
 #### Options
 
@@ -108,11 +110,15 @@ Additionally, the option `--format` allows you to choose the format of your inpu
 
  For example, for processing the files in `examples/` we run:
 
- `python ciderseq.py --format fastq examples/ciderseq_config.json examples/example1.fastq`
+ ```
+ python ciderseq.py --format fastq examples/ciderseq_config.json examples/example1.fastq
+ ```
 
 If we run:
 
-`python ciderseq.py --format fastq --no-separation --no-alignment examples/ciderseq_config.json examples/example1.fastq`
+```
+python ciderseq.py --format fastq --no-separation --no-alignment examples/ciderseq_config.json examples/example1.fastq
+```
 
 the Separation and Alignment steps [described above](#structure) will be skipped.
 
@@ -126,7 +132,9 @@ and then `join` the outputs into a single results directory.
 
 To run:
 
-`python cstools.py [options] ACTION CONFIGFILE INPUTFILE`
+```
+python cstools.py [options] ACTION CONFIGFILE INPUTFILE
+```
 
 The `CONFIGFILE` and `INPUTFILE` are the same as the ones used by `ciderseq.py`. See [below](#input-files) for details.
 
@@ -157,18 +165,24 @@ processed. A third action called `chart` can be run after processing to produce 
 
 The typical run command is:
 
-`python cstools.py --format fastq --numseq 10 --cluster "bsub -n 4" split examples/ciderseq_config.json examples/example1.fastq`
+```
+python cstools.py --format fastq --numseq 10 --cluster "bsub -n 4" split examples/ciderseq_config.json examples/example1.fastq
+```
 
 >The `split` command outputs all necessary execution commands without executing them.
 
 
 followed by (for joining):
-`python cstools.py --clean join examples/ciderseq_config.json examples/example1.fastq`
+```
+python cstools.py --clean join examples/ciderseq_config.json examples/example1.fastq
+```
 
 >The `clean` option will remove the folder and files crated during **split**.
 
 And (for plotting):
-`python cstools.py chart examples/ciderseq_config.json examples/example1.fastq`
+```
+python cstools.py chart examples/ciderseq_config.json examples/example1.fastq
+```
 
 ## Input Files
 

@@ -4,7 +4,7 @@ A detailed guide on our favorite way to locally install Python and the required 
 
 ## Install Homebrew
 
-Homebrew is a package manager for macOS, much like `apt-get` on Linux.
+Homebrew is a package manager for macOS, much like `apt-get` on Linux. Please install this. 
 
 To install, simply open your Terminal and type:
 ```
@@ -18,6 +18,15 @@ Once you have Homebrew installed, open Terminal and type:
 ```
 brew install python3
 ```
+
+## Install MUSCLE
+* Download Muscle from:www.drive5.com/muscle/downloads.htm
+* Extract the file and copy to your cider-seq folder.
+* If placed in another folder, make sure you edit the path address in the `ciderseq_config.json` file.
+
+## Install BLAST
+* Download the latest blast .dmg file from: ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/
+* Double click on the downloaded file to install (required administrator account)
 
 ## Install modules
 

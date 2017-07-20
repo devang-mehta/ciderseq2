@@ -44,6 +44,8 @@ pip install biopython
 
 will install Biopython.
 
+Please repeat and use pip to install all the required modules for ciderseq (see [Readme](readme.md))
+
 
 **Remember, if you already have Python 2 installed, use:**
 

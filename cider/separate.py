@@ -38,7 +38,7 @@ def separate(settings,seq,logger):
 			, evalue = float(settings['evalue'])
 			,    out = blastfile+".out"
 			,    cmd = settings['blastexe']
-			,   task = settings['blastexe']
+			,   task = 'blastn'
 			, outfmt = 5) #xml output
 	logger.debug(cline)
 	#execute command

@@ -42,7 +42,8 @@ def annotate(settings,inputfile,logger):
 				, subject = blastfile+".in" 
 				,  evalue = settings['evalue']
 				,     out = blastfile+".out"
-				,    task = settings['blastexe']
+				,     cmd = settings['blastexe']
+				,    task = 'tblastn'
 				,  outfmt = 5) #xml
 		#debug cline command
 		logger.debug(cline)

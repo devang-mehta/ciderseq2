@@ -33,7 +33,7 @@ full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
 ## Prerequisites
 (All of the following are essential to run CIDER-Seq)
 
-See [How to python macOS](how_to_python_macOS.md) for a brief guide to installing the following:
+See [howto python macOS](howto_python_macOS.md) or [howto_python_LINUX.md](howto_python_LINUX.md) for a brief guide to installing the following:
 
 * Python 3
 * [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE:BlastDocs&DOC_TYPE:Download "BLAST download page")
@@ -41,6 +41,7 @@ See [How to python macOS](how_to_python_macOS.md) for a brief guide to installin
 
 ### Python Modules
 
+* [NumPy](http://www.numpy.org/)
 * [Biopython](https://www.biopython.org)
 * [Click](http://click.pocoo.org/5/)
 * [Matplotlib](https://matplotlib.org/)
@@ -57,11 +58,10 @@ See [How to python macOS](how_to_python_macOS.md) for a brief guide to installin
 ## CIDER-Seq Installation
 The following are minimal steps to install the package after prerequisites are fulfilled:
 
-1. Clone this Git repository onto your machine.
+1. Clone/Download this Git repository onto your machine.
 2. Create a copy of configuration file `examples/ciderseq_config.json`.
 3. Edit the configuration file and set all necessary parameters (see [Config File](#config-file))
 4. Run `ciderseq` example (see [Usage](#usage))
-
 
 ## Structure
 
@@ -91,7 +91,7 @@ If you have access to your own cluster or wish to process only a small dataset r
 The primary run command is:
 
 ```
-python ciderseq.py [options] CONFIGFILE INPUTFILE
+python3 ciderseq.py [options] CONFIGFILE INPUTFILE
 ```
 
 #### Options
@@ -111,18 +111,18 @@ Additionally, the option `--format` allows you to choose the format of your inpu
  For example, for processing the files in `examples/` we run:
 
  ```
- python ciderseq.py --format fastq examples/ciderseq_config.json examples/example1.fastq
+ python3 ciderseq.py --format fastq examples/ciderseq_config.json examples/example1.fastq
  ```
 
 If we run:
 
 ```
-python ciderseq.py --format fastq --no-separation --no-alignment examples/ciderseq_config.json examples/example1.fastq
+python3 ciderseq.py --format fastq --no-separation --no-alignment examples/ciderseq_config.json examples/example1.fastq
 ```
 
 the Separation and Alignment steps [described above](#structure) will be skipped.
 
-Run `python ciderseq.py --help` for a brief description of usage and options.
+Run `python3 ciderseq.py --help` for a brief description of usage and options.
 
 ### For large datasets
 
@@ -133,7 +133,7 @@ and then `join` the outputs into a single results directory.
 To run:
 
 ```
-python cstools.py [options] ACTION CONFIGFILE INPUTFILE
+python3 cstools.py [options] ACTION CONFIGFILE INPUTFILE
 ```
 
 The `CONFIGFILE` and `INPUTFILE` are the same as the ones used by `ciderseq.py`. See [below](#input-files) for details.
@@ -166,7 +166,7 @@ processed. A third action called `chart` can be run after processing to produce 
 The typical run command is:
 
 ```
-python cstools.py --format fastq --numseq 10 --cluster "bsub -n 4" split examples/ciderseq_config.json examples/example1.fastq
+python3 cstools.py --format fastq --numseq 10 --cluster "bsub -n 4" split examples/ciderseq_config.json examples/example1.fastq
 ```
 
 >The `split` command outputs all necessary execution commands without executing them.
@@ -174,14 +174,14 @@ python cstools.py --format fastq --numseq 10 --cluster "bsub -n 4" split example
 
 followed by (for joining):
 ```
-python cstools.py --clean join examples/ciderseq_config.json examples/example1.fastq
+python3 cstools.py --clean join examples/ciderseq_config.json examples/example1.fastq
 ```
 
 >The `clean` option will remove the folder and files crated during **split**.
 
 And (for plotting):
 ```
-python cstools.py chart examples/ciderseq_config.json examples/example1.fastq
+python3 cstools.py chart examples/ciderseq_config.json examples/example1.fastq
 ```
 
 ## Input Files

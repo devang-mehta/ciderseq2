@@ -1,15 +1,20 @@
 # CIDER-Seq Data Analysis Software
 
-This repository contains data analysis software for CIDER-Seq (Circular DNA Enrichment Sequencing) including an implementation 
+This repository contains data analysis software for CIDER-Seq (Circular DNA Enrichment Sequencing) including an implementation
 of the **DeConcat** algorithm for sequence de-concatenation.
+
+## Please cite:
+
+Mehta D, Hirsch-Hoffmann M, Patrignani A, Gruissem W, Vanderschuren H (2017) CIDER-Seq: unbiased virus enrichment and single-read,
+full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
+
 
 ## Table of contents
 
-  * [Reference](#reference)
   * [Prerequisites](#prerequisites)
     + [Python Modules](#python-modules)
-    + [Standard modules:](#standard-modules-)
-  * [Installation](#installation)
+    + [Standard Modules:](#standard-modules)
+  * [Installation](#cider-seq-installation)
   * [Structure](#structure)
   * [Usage](#usage)
     + [For small datasets, or manual job handling](#for-small-datasets--or-manual-job-handling)
@@ -24,12 +29,11 @@ of the **DeConcat** algorithm for sequence de-concatenation.
     + [Explanation of name/value pairs](#explanation-of-name-value-pairs)
   * [References](#references)
 
-## Reference
-
-Mehta D, Hirsch-Hoffmann M, Patrignani A, Gruissem W, Vanderschuren H (2017) CIDER-Seq: unbiased virus enrichment and single-read, 
-full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
 
 ## Prerequisites
+(All of the following are essential to run CIDER-Seq)
+
+See [howto python macOS](howto_python_macOS.md) or [howto_python_LINUX.md](howto_python_LINUX.md) for a brief guide to installing the following:
 
 * Python 3
 * [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE:BlastDocs&DOC_TYPE:Download "BLAST download page")
@@ -37,12 +41,13 @@ full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
 
 ### Python Modules
 
+* [NumPy](http://www.numpy.org/)
 * [Biopython](https://www.biopython.org)
 * [Click](http://click.pocoo.org/5/)
 * [Matplotlib](https://matplotlib.org/)
 
-### Standard modules:
-
+### Standard Modules:
+(Should come pre-installed with Python)
 * sys
 * os
 * logging
@@ -50,14 +55,13 @@ full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
 * uuid
 * json
 
-## Installation
+## CIDER-Seq Installation
 The following are minimal steps to install the package after prerequisites are fulfilled:
 
-1. Clone this Git repository onto your machine.
+1. Clone/Download this Git repository onto your machine.
 2. Create a copy of configuration file `examples/ciderseq_config.json`.
-3. Edit the configuration file and set all necessary parameters (see [Config File](config-file))
+3. Edit the configuration file and set all necessary parameters (see [Config File](#config-file))
 4. Run `ciderseq` example (see [Usage](#usage))
-
 
 ## Structure
 
@@ -78,7 +82,7 @@ The primary `ciderseq.py` script runs a pipeline on input sequence data consisti
 
 ## Usage
 
-For regular users we recommend you ask your SMRT sequencing service provider to install CIDER-Seq on their computing cluster. 
+For regular users we recommend you ask your SMRT sequencing service provider to install CIDER-Seq on their computing cluster.
 If you have access to your own cluster or wish to process only a small dataset read on:
 
 
@@ -86,7 +90,9 @@ If you have access to your own cluster or wish to process only a small dataset r
 
 The primary run command is:
 
-`python ciderseq.py [options] CONFIGFILE INPUTFILE`
+```
+python3 ciderseq.py [options] CONFIGFILE INPUTFILE
+```
 
 #### Options
 
@@ -104,25 +110,31 @@ Additionally, the option `--format` allows you to choose the format of your inpu
 
  For example, for processing the files in `examples/` we run:
 
- `python ciderseq.py --format fastq examples/ciderseq_config.json examples/example1.fastq`
+ ```
+ python3 ciderseq.py --format fastq examples/ciderseq_config.json examples/example1.fastq
+ ```
 
 If we run:
 
-`python ciderseq.py --format fastq --no-separation --no-alignment examples/ciderseq_config.json examples/example1.fastq`
+```
+python3 ciderseq.py --format fastq --no-separation --no-alignment examples/ciderseq_config.json examples/example1.fastq
+```
 
 the Separation and Alignment steps [described above](#structure) will be skipped.
 
-Run `python ciderseq.py --help` for a brief description of usage and options.
+Run `python3 ciderseq.py --help` for a brief description of usage and options.
 
 ### For large datasets
 
-We provide `cstool.py` in order to process large sequence datasets on a computing cluster (similar to the one your SMRT Analysis software 
-is installed on). `cstool.py` is basically a file-handling program which will allow you to `split` your input sequences into batches 
+We provide `cstools.py` in order to process large sequence datasets on a computing cluster (similar to the one your SMRT Analysis software
+is installed on). `cstools.py` is basically a file-handling program which will allow you to `split` your input sequences into batches
 and then `join` the outputs into a single results directory.
 
 To run:
 
-`python cstool.py [options] ACTION CONFIGFILE INPUTFILE`
+```
+python3 cstools.py [options] ACTION CONFIGFILE INPUTFILE
+```
 
 The `CONFIGFILE` and `INPUTFILE` are the same as the ones used by `ciderseq.py`. See [below](#input-files) for details.
 
@@ -139,32 +151,38 @@ The `CONFIGFILE` and `INPUTFILE` are the same as the ones used by `ciderseq.py`.
 
 >`numseq`: is the number of sequences in a single batch. The default is 1 (each sequence is processed independently).
 
->`cluster`: contains cluster submission parameters, e.g. `"bsub -n 4"` in a LSF environment. 
+>`cluster`: contains cluster submission parameters, e.g. `"bsub -n 4"` in a LSF environment.
 
 >`clean`: if absent, the folders with the split data will not be deleted. Useful for debugging.
 
 
 #### Actions
 
-`cstool.py` has two primary actions: `split` and `join` which split input files into several jobs and then join the split jobs once 
+`cstools.py` has two primary actions: `split` and `join` which split input files into several jobs and then join the split jobs once
 processed. A third action called `chart` can be run after processing to produce DeConcat statistics. See `examples/plots` for examples of each chart.
 
 #### Typical Usage
 
 The typical run command is:
 
-`python cstool.py --format fastq --numseq 10 --cluster "bsub -n 4" split examples/ciderseq_config.json examples/example1.fastq`
+```
+python3 cstools.py --format fastq --numseq 10 --cluster "bsub -n 4" split examples/ciderseq_config.json examples/example1.fastq
+```
 
 >The `split` command outputs all necessary execution commands without executing them.
 
 
 followed by (for joining):
-`python cstool.py --clean join examples/ciderseq_config.json examples/example1.fastq`
+```
+python3 cstools.py --clean join examples/ciderseq_config.json examples/example1.fastq
+```
 
 >The `clean` option will remove the folder and files crated during **split**.
 
 And (for plotting):
-`python cstool.py chart examples/ciderseq_config.json examples/example1.fastq`
+```
+python3 cstools.py chart examples/ciderseq_config.json examples/example1.fastq
+```
 
 ## Input Files
 
@@ -183,82 +201,60 @@ See our example file `examples/ciderseq_config.json` for details.
 
 ## Config File
 
-`ciderseq.py` reads configuration parameters from provided `CONFIGFILE`. The `CONFIGFILE` is written in JSON format.
-
+`ciderseq.py` reads configuration parameters from the provided `CONFIGFILE`.
 see `examples/ciderseq_config.json` for an example.
-Below is an example `ciderseq_config.json` file, which should get the `ciderseq.py` command running if blast- and 
-muscle-executables are in the `$PATH` environment variable. For details, check the below list for all available 
-configuration name/value pairs.
 
-```
-{
-"loglevel"		:	"DEBUG",
-"outputdir"		:	"logs",
-"separate":{
-	"outputdir"		:	"separate",
-	"blastinit"		: 	"",
-	"blastexe"		:	"blastn",
-	"blastndb"		: 	"./examples/blastdb/EACMV_RefSeq.fasta",
-	"evalue"		: 	1
-},
-"align":{
-	"outputdir"		:	"align",
-	"muscleinit"	:	"",
-	"muscleexe"		:	"muscle",
-	"targets"		:	{
-		"EACMV_DNA_A"	:	"./examples/blastdb/EACMV_DNA_A.fa",
-		"EACMV_DNA_B"	:	"./examples/blastdb/EACMV_DNA_B.fa"
-	},
-	"windowsize"	:	10
-},
-"deconcat":{
-	"outputdir"		:	"deconcat",
-	"muscleinit"	:	"",
-	"muscleexe"		:	"muscle",
-	"fragmentsize"	:	30,
-	"statistics"	:	1
-},
-"annotate":{
-	"outputdir"		:	"annotate",
-	"blastinit"		: 	"",
-	"blastexe"		:	"tblastn",
-	"tblastndb" 	:	"./examples/blastdb/ACMV_Proteins.fasta",
-	"evalue" 		:	0.01
-},
-"phase":{
-	"outputdir"		:	"phased",
-	"outputformat"	:	["genbank","fasta"],
-	"phasegenomes":{
-		"EACMV_DNA_A"	:	{
-			"proteins" 	:	{
-				"AC1"	:	{"strand"	:	-1},
-				"AC2"	:	{"strand"	:	-1},
-				"AC3"	:	{"strand"	:	-1},
-				"AC4"	:	{"strand"	:	-1},
-				"AC5"	:	{"strand"	:	-1},
-				"AV1"	:	{"strand"	:	1},
-				"AV2"	:	{"strand"	:	1}
-			},
-			"phaseto" 	: 	"AV2"
-			,"offset"	:	10
-		},
-		"EACMV_DNA_B"	: 	{ 
-			"proteins" 	: 	{
-				"BC1"	:	{"strand"	:	1},
-				"BV1"	:	{"strand"	:	-1}
-			},
-			"phaseto" 	: 	"BC1",
-			"offset"	:	10
-		}
-	}
-}
-}
-```
+Please read on for a detailed explanation of how to edit the `CONFIGFILE` file:
 
-We recommend using `examples/ciderseq_config.json` and editing the values for your analysis.
+**We recommend using `examples/ciderseq_config.json` and editing the values for your analysis.**
+
+There are several options available to modify in the `CONFIGFILE`.
+
+Essential changes that you will almost certainly need to make are **highlighted in green** in the images below.
+
+**Overall Settings**
 
 
-### Explanation of name/value pairs
+![alt-text][image1]
+
+
+**Configuring `separate.py`:**
+
+
+![alt-text][image2]
+
+
+**Configuring `align.py`:**
+
+
+![alt-text][image3]
+
+
+**Configuring `deconcat.py`:**
+
+
+![alt-text][image4]
+
+
+**Configuring `annotate.py`:**
+
+
+![alt-text][image5]
+
+
+**Configuring `phase.py`:**
+
+
+![alt-text][image6]
+
+
+**Configuring Phasing:**
+
+
+![alt-text][image7]
+
+
+### A more detailed explanation of name/value pairs
 
 * loglevel : "DEBUG", will write log information into output dir
 * outputdir : "destination of log information"
@@ -297,7 +293,7 @@ We recommend using `examples/ciderseq_config.json` and editing the values for yo
   * phasegenomes : (array of genomes for phasing)
      * "name of genome" : (array of phasing parameters)
          * proteins : array of proteins in genome
-             * "name of protein" : (protein strand information) 
+             * "name of protein" : (protein strand information)
                  * "strand" : "1"=forward strand, "-1"=reverse strand"  
          * phaseto : "name of protein to set sequence start position"
          * offset : (offset to start before protein position) if "10", phaseto protein will start at position 10
@@ -305,3 +301,11 @@ We recommend using `examples/ciderseq_config.json` and editing the values for yo
 ## References
 Hunter JD (2007) Matplotlib: A 2D graphics environment. Computing in Science & Engineering 9:3 90-95
 doi:[10.5281/zenodo/573577](https://zenodo.org/record/573577#.WWjXm9N96L4)
+
+[image1]: https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq.png
+[image2]: https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq%202.png
+[image3]: https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq%203.png
+[image4]: https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq%204.png
+[image5]: https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq%205.png
+[image6]: https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq%206.png
+[image7]: https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq%207.png

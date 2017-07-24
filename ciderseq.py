@@ -23,7 +23,7 @@ from Bio import SeqIO
 @click.argument('inputfile', type=click.Path(exists=True,readable=True))
 #*************** OPTIONS *****************************
 #input-filetype
-@click.option('--format', default='fasta', type=click.Choice(['fasta','fastq','tab','gb']), help='Input-file format (default=FASTA).')
+@click.option('--format', default='fasta', type=click.Choice(['fasta','fastq','tab','gb']), help='Input-file format (default=FASTA).',prompt=True)
 #options to turn processing steps off
 @click.option('--no-separation', is_flag=True, help='will not perform separation step.')
 @click.option('--no-alignment', is_flag=True, help='will not perform alignment step.')

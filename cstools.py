@@ -189,7 +189,7 @@ def plot(configfile,inputfile):
 	import matplotlib.pyplot as plt
 	#print('chart')
 	#create chart directory
-	outputdir=os.path.dirname(inputfile)+"/plot"
+	outputdir=os.path.dirname(inputfile)+"/plots"
 	if not os.path.isdir(outputdir):
 		try:
 			os.mkdir(outputdir)

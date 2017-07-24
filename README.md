@@ -128,48 +128,50 @@ Run `python3 ciderseq.py --help` for a brief description of usage and options.
 
 We provide `cstools.py` in order to process large sequence datasets on a computing cluster (similar to the one your SMRT Analysis software
 is installed on). `cstools.py` is basically a file-handling program which will allow you to `split` your input sequences into batches
-and then `join` the outputs into a single results directory.
+and then `join` the outputs into a single results directory. Command `plot` will create a set of different plots based on the processed 
+results, separation- and phase-results are required. 
 
 To run:
 
 ```
-python3 cstools.py [options] ACTION CONFIGFILE INPUTFILE
+python3 cstools.py [options] COMMAND CONFIGFILE INPUTFILE
 ```
 
 The `CONFIGFILE` and `INPUTFILE` are the same as the ones used by `ciderseq.py`. See [below](#input-files) for details.
+
+#### COMMAND
+
+`cstools.py` has two primary actions: `split` and `join` which split input files into several jobs and then join the split jobs once
+processed. A third action called `plot` can be run after processing to produce DeConcat statistics. See `examples/plots` for examples of each chart.
+
 
 #### Options
 
 ```
 --format
---numseq
+--numjobs
 --cluster
 --clean
 ```
 
 > `format`: is the format of the input file, default FASTA
 
->`numseq`: is the number of sequences in a single batch. The default is 1 (each sequence is processed independently).
+>`numjobs`: is the number of processing jobs to create. the sequences equally distributed to the provides number of jobs. The default is 1.
 
 >`cluster`: contains cluster submission parameters, e.g. `"bsub -n 4"` in a LSF environment.
 
 >`clean`: if absent, the folders with the split data will not be deleted. Useful for debugging.
 
 
-#### Actions
-
-`cstools.py` has two primary actions: `split` and `join` which split input files into several jobs and then join the split jobs once
-processed. A third action called `chart` can be run after processing to produce DeConcat statistics. See `examples/plots` for examples of each chart.
-
 #### Typical Usage
 
 The typical run command is:
 
 ```
-python3 cstools.py --format fastq --numseq 10 --cluster "bsub -n 4" split examples/ciderseq_config.json examples/example1.fastq
+python3 cstools.py --format fastq --numjobs 8 --cluster "bsub -n 1" split examples/ciderseq_config.json examples/example1.fastq
 ```
 
->The `split` command outputs all necessary execution commands without executing them.
+>The `split` command outputs all necessary execution commands and ask confirmation before executing them.
 
 
 followed by (for joining):
@@ -181,7 +183,7 @@ python3 cstools.py --clean join examples/ciderseq_config.json examples/example1.
 
 And (for plotting):
 ```
-python3 cstools.py chart examples/ciderseq_config.json examples/example1.fastq
+python3 cstools.py plot examples/ciderseq_config.json examples/example1.fastq
 ```
 
 ## Input Files
@@ -299,7 +301,7 @@ Essential changes that you will almost certainly need to make are **highlighted 
          * offset : (offset to start before protein position) if "10", phaseto protein will start at position 10
 
 ## References
-Hunter JD (2007) Matplotlib: A 2D graphics environment.Â Computing in Science & Engineering 9:3 90-95
+Hunter JD (2007) Matplotlib: A 2D graphics environment. Computing in Science & Engineering 9:3 90-95
 doi:[10.5281/zenodo/573577](https://zenodo.org/record/573577#.WWjXm9N96L4)
 
 [image1]: https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq.png

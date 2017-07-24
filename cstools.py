@@ -12,6 +12,7 @@ import logging
 import tempfile
 import json
 import glob
+import time
 from Bio import SeqIO
 
 ########################################################################################################								
@@ -60,6 +61,8 @@ def split(configfile,inputfile,format,numjobs,cluster):
 			for i in range (0,numjobs):
 				click.echo('.')
 				os.system(outputfile[i]['cluster'])
+				#delay execution on next command because of directory creation in ciderseq.py
+				time.sleep(1)
 	else:
 		print('Output directory already exists. Use \'rm -rf '+inputfile+'.dir\' to remove split-target directory.')
 		sys.exit(1)

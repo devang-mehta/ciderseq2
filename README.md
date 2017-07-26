@@ -9,6 +9,9 @@ Mehta D, Hirsch-Hoffmann M, Patrignani A, Gruissem W, Vanderschuren H (2017) CID
 full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
 
 
+[![DOI](https://zenodo.org/badge/94900933.svg)](https://zenodo.org/badge/latestdoi/94900933)
+
+
 ## Table of contents
 
   * [Prerequisites](#prerequisites)
@@ -301,7 +304,7 @@ Essential changes that you will almost certainly need to make are **highlighted 
          * offset : (offset to start before protein position) if "10", phaseto protein will start at position 10
 
 ## References
-Hunter JD (2007) Matplotlib: A 2D graphics environment. Computing in Science & Engineering 9:3 90-95
+Hunter JD (2007) Matplotlib: A 2D graphics environment.Â Computing in Science & Engineering 9:3 90-95
 doi:[10.5281/zenodo/573577](https://zenodo.org/record/573577#.WWjXm9N96L4)
 
 [image1]: https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq.png

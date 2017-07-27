@@ -6,10 +6,10 @@ of the **DeConcat** algorithm for sequence de-concatenation.
 ## Please cite:
 
 Mehta D, Hirsch-Hoffmann M, Patrignani A, Gruissem W, Vanderschuren H (2017) CIDER-Seq: unbiased virus enrichment and single-read,
-full length genome sequencing. ***bioRxiv***. doi:**insert bioRxiv link here**
+full length genome sequencing. ***bioRxiv*** 168724; doi: https://doi.org/10.1101/168724
 
 
-[![DOI](https://zenodo.org/badge/94900933.svg)](https://zenodo.org/badge/latestdoi/94900933)
+CODE: [![DOI](https://zenodo.org/badge/94900933.svg)](https://zenodo.org/badge/latestdoi/94900933)
 
 
 ## Table of contents

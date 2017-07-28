@@ -306,7 +306,7 @@ Essential changes that you will almost certainly need to make are **highlighted 
          * offset : (offset to start before protein position) if "10", phaseto protein will start at position 10
 
 ## License
-Copyright (c) 2017, Matthias Hirsch-Hoffmann and Devang Mehta, ETH Zurich. CIDER-Seq is licensed under the GNU General Public License, version 3 (https://www.gnu.org/licenses/gpl-3.0.en.html) or see [LICENSE.txt](LICENSE.txt).
+Copyright &copy; 2017, Matthias Hirsch-Hoffmann and Devang Mehta, ETH Zurich. CIDER-Seq is licensed under the GNU General Public License, version 3 (https://www.gnu.org/licenses/gpl-3.0.en.html) or see [LICENSE.txt](LICENSE.txt).
 
 ## Disclamer
 This software is supplied 'as is' without any warranty or guarantee of support. ETH Zurich is not responsible for its use, misuse, or functionality. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability arising from, out of, or in connection with this software.

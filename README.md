@@ -30,6 +30,8 @@ CODE: [![DOI](https://zenodo.org/badge/94900933.svg)](https://zenodo.org/badge/l
   * [Output Files](#output-files)
   * [Config File](#config-file)
     + [Explanation of name/value pairs](#explanation-of-name-value-pairs)
+  * [License](#license)
+  * [Disclamer](#disclamer)
   * [References](#references)
 
 
@@ -303,8 +305,14 @@ Essential changes that you will almost certainly need to make are **highlighted 
          * phaseto : "name of protein to set sequence start position"
          * offset : (offset to start before protein position) if "10", phaseto protein will start at position 10
 
+## License
+Copyright (c) 2017, Matthias Hirsch-Hoffmann and Devang Mehta, ETH Zurich. CIDER-Seq is licensed under the GNU General Public License, version 3 (https://www.gnu.org/licenses/gpl-3.0.en.html) or see [LICENSE.txt](LICENSE.txt).
+
+## Disclamer
+This software is supplied 'as is' without any warranty or guarantee of support. ETH Zurich is not responsible for its use, misuse, or functionality. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability arising from, out of, or in connection with this software.
+
 ## References
-Hunter JD (2007) Matplotlib: A 2D graphics environment.Â Computing in Science & Engineering 9:3 90-95
+Hunter JD (2007) Matplotlib: A 2D graphics environment. Computing in Science & Engineering 9:3 90-95
 doi:[10.5281/zenodo/573577](https://zenodo.org/record/573577#.WWjXm9N96L4)
 
 [image1]: https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq.png

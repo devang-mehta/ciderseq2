@@ -40,10 +40,10 @@ def _uncircle_seq(settings,seq,logger):
 	divisor = int(round(float(len(str(seq.seq)))/float(settings['fragmentsize']))) #compute the number or pieces
 	
 	if divisor == 1:
-		#pieces to small, interrupt process
+		#pieces too small, interrupt process
 		return 0, 0, -1, '','',''
 	
-	#devide sequence		
+	#divide sequence		
 	coord= int(len(str(seq.seq))/divisor)
 	
 	if coord < settings['fragmentsize']:  #check coord size, sould be > fragment size or

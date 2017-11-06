@@ -23,41 +23,41 @@ def _conscore(consensus):
 	for i in range(0,len(l)): #loop through list
 		if len(l[i])>0: #eliminate all no match
 			m.append(l[i]) #keep consenses
-	
+
 	#print m
 	t=0
 	for i in range(0,len(m)): #calculate total length of matches
 		t+=len(m[i])
-	
-	score=0	
+
+	score=0
 	if float(len(m)) > 0:
-		score=float(t)/float(len(m)) #calculate score of total length devided by quantity of pieces.	
-	return score	
+		score=float(t)/float(len(m)) #calculate score of total length devided by quantity of pieces.
+	return score
 #################################################################################################
-#uncirle sequence	
+#uncirle sequence
 def _uncircle_seq(settings,seq,logger):
-	
+
 	divisor = int(round(float(len(str(seq.seq)))/float(settings['fragmentsize']))) #compute the number or pieces
-	
-	if divisor == 1:
+
+	if divisor <= 1:
 		#pieces too small, interrupt process
 		return 0, 0, -1, '','',''
-	
-	#divide sequence		
+
+	#divide sequence
 	coord= int(len(str(seq.seq))/divisor)
-	
+
 	if coord < settings['fragmentsize']:  #check coord size, sould be > fragment size or
 		coord = settings['fragmentsize'] #set coord = fragment size
-	
+
 	seqstart={}
 	seqend={}
 	seqcon={}
 	seqscore={}
-	
+
 	maxscore=0
 	maxindex=0
 	maxrevidx=0
-	
+
 	for fwd_rev_flag in range(0,2): #0=fwd, 1=rev
 		#print fwd_rev_flag
 		for i in range(1,divisor): #i is counter
@@ -67,9 +67,9 @@ def _uncircle_seq(settings,seq,logger):
 			#print startseq
 			if fwd_rev_flag == 1:
 				tmp=Seq(startseq)
-				startseq=str(tmp.reverse_complement())	
+				startseq=str(tmp.reverse_complement())
 				#print startseq
-			
+
 			#print "*"*60
 			endseq=str(seq.seq)[ncoord:]
 			#print ">0:"+str(ncoord)
@@ -87,52 +87,52 @@ def _uncircle_seq(settings,seq,logger):
 			with open(in_file, "wt") as output_handle:
 				SeqIO.write(myseqs,output_handle,'fasta')
 			output_handle.close()
-			#define output filename			
+			#define output filename
 			out_file = settings['tempdirdir']+"/"+filename+".out"
-			#define muscle exe			
+			#define muscle exe
 			muscle_exe = settings['muscleexe']
 			#create muscle command
 			muscle_cline = MuscleCommandline(muscle_exe, input=in_file, out=out_file)
 			#log
 			#logger.debug(muscle_cline)
 			#execute muscle command
-			stdout, stderr = muscle_cline()	
+			stdout, stderr = muscle_cline()
 			resseq={} #fill result into hash
 			#read out_file file
 			for resrecord in SeqIO.parse(out_file, "fasta"):
 				resseq[str(resrecord.id)]=str(resrecord.seq)
 				#print str(resrecord.id)[0:20]+"\t"+str(resrecord.seq)
-	
+
 			#create consensus
 			resseq['consensus']=''
 			#keep longest peaces
-			
+
 			#sys.stdout.write("consensus...........\t")
 			for ii in range(0,len(resseq['start_'+str(seq.id)])):
 				#print resseq['start_'+str(seq.id)][i:(i+1)],resseq['end_'+str(seq.id)][i:(i+1)]
-				
+
 				if resseq['start_'+str(seq.id)][ii:(ii+1)]==resseq['end_'+str(seq.id)][ii:(ii+1)]:
 					#sys.stdout.write("*")
 					resseq['consensus']+="*"
 				else:
 					#sys.stdout.write(" ")
 					resseq['consensus']+="#"
-		
+
 			#remove files
 			os.remove(in_file)
 			os.remove(out_file)
-			
+
 			seqscore[str(i)+'-'+str(fwd_rev_flag)]=_conscore(resseq['consensus'])
 			seqstart[str(i)+'-'+str(fwd_rev_flag)]=resseq['start_'+str(seq.id)]
 			seqcon[str(i)+'-'+str(fwd_rev_flag)]=resseq['consensus']
 			seqend[str(i)+'-'+str(fwd_rev_flag)]=resseq['end_'+str(seq.id)]
-			
+
 			if seqscore[str(i)+'-'+str(fwd_rev_flag)] > maxscore:
 				logger.debug(str(i)+":"+str(fwd_rev_flag)+":"+str(seqscore[str(i)+'-'+str(fwd_rev_flag)]))
 				maxscore=seqscore[str(i)+'-'+str(fwd_rev_flag)]
 				maxindex=i
 				maxrevidx=fwd_rev_flag
-		
+
 	return (maxindex,maxrevidx,seqscore[str(maxindex)+'-'+str(maxrevidx)],seqstart[str(maxindex)+'-'+str(maxrevidx)],seqcon[str(maxindex)+'-'+str(maxrevidx)],seqend[str(maxindex)+'-'+str(maxrevidx)])
 #################################################################################################
 def _find_start_end(sequence):
@@ -150,7 +150,7 @@ def _find_start_end(sequence):
 			endpos = (i+10)
 			break
 	#return startpos and endpos
-	return (startpos,endpos)	
+	return (startpos,endpos)
 #################################################################################################
 def _prep_new_seq(sstart,send,revcomp,logger):
 	#routine to return new sequence
@@ -159,10 +159,10 @@ def _prep_new_seq(sstart,send,revcomp,logger):
 
 	startpos_end=len(send)
 	endpos_end=0
-	
+
 	startpos_start,endpos_start = _find_start_end(sstart)
 	startpos_end,endpos_end = _find_start_end(send)
-	
+
 	logger.debug('find_start_end:'+str(startpos_start)+":"+str(endpos_start)+":"+str(startpos_end)+":"+str(endpos_end))
 	mycase=''
 	if startpos_start < startpos_end:
@@ -251,11 +251,11 @@ def _process_seq(settings,seq,circles,deconcatcases,fout,foutstats,logger):
 		for s in nseqs:
 			if len(nseqs)>1:
 				seq.id=str(seq.id)+str(counter)
-			
+
 			#create new sequence record
 			newseq=SeqRecord(Seq(s,IUPAC.unambiguous_dna)
 					,id=str(seq.id),name='',description='')
-			
+
 			_process_seq(settings,newseq,(circles+1),deconcatcases,fout,foutstats,logger)
 			counter+=1
 	else:
@@ -293,10 +293,8 @@ def deconcatenate(settings,seq,logger):
 	#close
 	fout.close()
 	if settings['statistics']==1:
-		foutstats.close() 
+		foutstats.close()
 	#remove tempdir
 	os.rmdir(settings['tempdirdir'])
 	return basefilename
 #################################################################################################
-
-

@@ -5,8 +5,7 @@ of the **DeConcat** algorithm for sequence de-concatenation.
 
 ## Please cite:
 
-Mehta D, Hirsch-Hoffmann M, Patrignani A, Gruissem W, Vanderschuren H (2017) CIDER-Seq: unbiased virus enrichment and single-read,
-full length genome sequencing. ***bioRxiv*** 168724; doi: https://doi.org/10.1101/168724
+Mehta D, Hirsch-Hoffmann M, Patrignani A, Gruissem W, Vanderschuren H (2019) A new full-length circular DNA sequencing method for viral-sized genomes reveals that RNAi transgenic plants provoke a shift in geminivirus populations in the field. ***Nucleic Acids Research*** , Volume 47, Issue 2; doi: https://doi.org/10.1093/nar/gky914
 
 
 CODE: [![DOI](https://zenodo.org/badge/94900933.svg)](https://zenodo.org/badge/latestdoi/94900933)
@@ -312,7 +311,7 @@ Copyright &copy; 2017, Matthias Hirsch-Hoffmann and Devang Mehta, ETH Zurich. CI
 This software is supplied 'as is' without any warranty or guarantee of support. ETH Zurich is not responsible for its use, misuse, or functionality. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability arising from, out of, or in connection with this software.
 
 ## References
-Hunter JD (2007) Matplotlib: A 2D graphics environment. Computing in Science & Engineering 9:3 90-95
+Hunter JD (2007) Matplotlib: A 2D graphics environment.Â Computing in Science & Engineering 9:3 90-95
 doi:[10.5281/zenodo/573577](https://zenodo.org/record/573577#.WWjXm9N96L4)
 
 [image1]: https://github.com/hirschhm/ciderseq/blob/master/config-images/ciderseq_ciderseq_config_json_at_master_%C2%B7_hirschhm_ciderseq.png

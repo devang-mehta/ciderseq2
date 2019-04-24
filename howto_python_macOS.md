@@ -23,6 +23,7 @@ brew install python3
 * Download Muscle from:www.drive5.com/muscle/downloads.htm
 * Extract the file and copy to your cider-seq folder.
 * If placed in another folder, make sure you edit the path address in the `ciderseq_config.json` file.
+* For MAC OS, please edit the name of the MUSCLE file in the `ciderseq_config.json` file to muscle3.8.31_i86darwin64 or whichever version of MUSCLE you downloaded. 
 
 ## Install BLAST
 * Download the latest blast .dmg file from: ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/

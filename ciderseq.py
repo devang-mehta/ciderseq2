@@ -16,7 +16,7 @@ from Bio import SeqIO
 @click.command()
 #which arguments and options are needed? 
 #arguments=mandatory, option=possible
-#*************** ARGUMENETS *****************************
+#*************** ARGUMENTS *****************************
 #config-file
 @click.argument('configfile', type=click.Path(exists=True,readable=True))
 #input-file

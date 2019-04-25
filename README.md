@@ -5,7 +5,7 @@ of the **DeConcat** algorithm for sequence de-concatenation.
 
 ## Please cite:
 
-Mehta D, Hirsch-Hoffmann M, Patrignani A, Gruissem W, Vanderschuren H (2019) A new full-length circular DNA sequencing method for viral-sized genomes reveals that RNAi transgenic plants provoke a shift in geminivirus populations in the field. ***Nucleic Acids Research*** , Volume 47, Issue 2; doi: https://doi.org/10.1093/nar/gky914
+Mehta D, Hirsch-Hoffmann M, Were M, Patrignani A, Were H, Gruissem W, Vanderschuren H (2019) A new full-length circular DNA sequencing method for viral-sized genomes reveals that RNAi transgenic plants provoke a shift in geminivirus populations in the field. ***Nucleic Acids Research*** , Volume 47, Issue 2; doi: https://doi.org/10.1093/nar/gky914
 
 
 CODE: [![DOI](https://zenodo.org/badge/94900933.svg)](https://zenodo.org/badge/latestdoi/94900933)

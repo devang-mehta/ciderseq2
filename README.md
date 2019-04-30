@@ -5,7 +5,7 @@ of the **DeConcat** algorithm for sequence de-concatenation.
 
 ## Please cite:
 
-Mehta D, Hirsch-Hoffmann M, Patrignani A, Gruissem W, Vanderschuren H (2019) A new full-length circular DNA sequencing method for viral-sized genomes reveals that RNAi transgenic plants provoke a shift in geminivirus populations in the field. ***Nucleic Acids Research*** , Volume 47, Issue 2; doi: https://doi.org/10.1093/nar/gky914
+Mehta D, Hirsch-Hoffmann M, Were M, Patrignani A, Were H, Gruissem W, Vanderschuren H (2019) A new full-length circular DNA sequencing method for viral-sized genomes reveals that RNAi transgenic plants provoke a shift in geminivirus populations in the field. ***Nucleic Acids Research*** , Volume 47, Issue 2; https://doi.org/10.1093/nar/gky914
 
 
 CODE: [![DOI](https://zenodo.org/badge/94900933.svg)](https://zenodo.org/badge/latestdoi/94900933)
@@ -138,7 +138,7 @@ results, separation- and phase-results are required.
 To run:
 
 ```
-python3 cstools.py [options] COMMAND CONFIGFILE INPUTFILE
+python3 cstools.py COMMAND [options] CONFIGFILE INPUTFILE
 ```
 
 The `CONFIGFILE` and `INPUTFILE` are the same as the ones used by `ciderseq.py`. See [below](#input-files) for details.
@@ -172,7 +172,7 @@ processed. A third action called `plot` can be run after processing to produce D
 The typical run command is:
 
 ```
-python3 cstools.py --format fastq --numjobs 8 --cluster "bsub -n 1" split examples/ciderseq_config.json examples/example1.fastq
+python3 cstools.py split --format fastq --numjobs 8 --cluster "bsub -n 1" examples/ciderseq_config.json examples/example1.fastq
 ```
 
 >The `split` command outputs all necessary execution commands and ask confirmation before executing them.
@@ -180,7 +180,7 @@ python3 cstools.py --format fastq --numjobs 8 --cluster "bsub -n 1" split exampl
 
 followed by (for joining):
 ```
-python3 cstools.py --clean join examples/ciderseq_config.json examples/example1.fastq
+python3 cstools.py join --clean examples/ciderseq_config.json examples/example1.fastq
 ```
 
 >The `clean` option will remove the folder and files crated during **split**.

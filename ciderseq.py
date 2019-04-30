@@ -3,8 +3,8 @@
 __author__ = "Matthias Hirsch-Hoffmann, Devang Mehta"
 __copyright__ = "Copyright 2017, ETH Zuerich"
 __version__ = "1.0.0"
-__maintainer__ = "Matthias Hirsch-Hoffmann"
-__email__ = "hirschhm@ethz.ch"
+__maintainer__ = "Matthias Hirsch-Hoffmann, Devang Mehta"
+__email__ = "devangmehta@ualberta.ca, matthias@hirsch-hoffmann.ch"
 __status__ = "Production"
 import sys,os
 import click
@@ -16,7 +16,7 @@ from Bio import SeqIO
 @click.command()
 #which arguments and options are needed? 
 #arguments=mandatory, option=possible
-#*************** ARGUMENETS *****************************
+#*************** ARGUMENTS *****************************
 #config-file
 @click.argument('configfile', type=click.Path(exists=True,readable=True))
 #input-file

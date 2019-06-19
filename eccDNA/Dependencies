@@ -1,0 +1,10 @@
+#Dependencies
+
+Blast
+
+https://metacpan.org/release/Bio-MUST-Core
+cpanm Bio-MUST-Core
+
+NCBI nt
+update_blastdb.pl
+

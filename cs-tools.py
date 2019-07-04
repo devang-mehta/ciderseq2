@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-"""cstool.py: Script to split and join reads in input file."""
+"""cs-tools.py: Script to split and join reads in input file."""
 __author__ = "Matthias Hirsch-Hoffmann, Devang Mehta"
-__copyright__ = "Copyright 2017, ETH Zuerich"
-__version__ = "1.1.0"
+__copyright__ = "Copyright 2019, Devang Mehta & Matthias Hirsch-Hoffmann"
+__version__ = "2.0.0"
 __maintainer__ = "Devang Mehta"
 __email__ = "devangmehta@ualberta.ca"
 __status__ = "Production"

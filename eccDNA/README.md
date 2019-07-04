@@ -1,8 +1,6 @@
-# CIDER-Seq eccDNA Detection Program
+# cider
 
-
-
-Usage: cs-eccDNA.py [OPTIONS] LIST_FILE GENOME_FILE
+Usage: CIDER-main.py [OPTIONS] LIST_FILE GENOME_FILE
 
   Script CIDER
 

@@ -34,7 +34,7 @@ def blastn_ncbi(database, query_file, blast_output, thread, mode):
 		
 	elif(mode == 'remote'):
 		
-		blastn_cmd = 'blastn -db nt -query {0} -out {1} -outfmt="6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore staxids" -evalue=1e-3 -num_alignments=10 -num_threads={2} -remote'.format(query_file, blast_output, thread)
+		blastn_cmd = 'blastn -db nt -query {0} -out {1} -outfmt="6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore staxids" -evalue=1e-3 -num_alignments=10 -remote'.format(query_file, blast_output)
 		
 		DB_process = subprocess.Popen(blastn_cmd,
 									  shell=True)

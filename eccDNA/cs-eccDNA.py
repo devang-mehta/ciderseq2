@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 #
 
-"""Main script for the CIDER-Seq eccDNA Detection Program"""
+"""ciderseq-phasing.py: Main script of the cider phasing algorithm."""
 __author__ = "Luc Cornet, Syed Shan-e-Ali Zaidi"
-__copyright__ = "Copyright 2018, University of Liège"
+__copyright__ = "Copyright 2019, University of Liège"
 __version__ = "1.0.0"
 __maintainer__ = "Luc Cornet"
 __email__ = "luc.cornet@uliege.be"
@@ -31,13 +31,14 @@ from modules.shortenfasta import *
 #Genome host file path : input/manihot_esculenta_07Oct2017_aWswf_tme3.fasta
 @click.argument('genome_file', type=click.Path(exists=True,readable=True))
 ###OPTIONS#####
+@click.option('--ncbiblast', default='no', help='NCBI blast, yes or no - first separate sequences between virus and host')
 @click.option('--blastn_mode', default='local', help='Blastn mode : local or remote, local recommended')
 @click.option('--path_2_ncbi_blastdb', default='/media/vol1/databases/nt-20170809/nt', help='Input local nt DB')
 @click.option('--blast_threads', default=40, help='Number of cores for Blast')
 @click.option('--gap_window', default=150, help='Number of gap between two hits')
 
 
-def main(list_file, genome_file, path_2_ncbi_blastdb, blast_threads, gap_window, blastn_mode):
+def main(list_file, genome_file, ncbiblast, path_2_ncbi_blastdb, blast_threads, gap_window, blastn_mode):
 	"""Script CIDER"""
 	##take list of replicates samples
 	seen_files = {}
@@ -50,19 +51,20 @@ def main(list_file, genome_file, path_2_ncbi_blastdb, blast_threads, gap_window,
 		seen_files[fasta] = stat
 		
 	##Check Origin of sequence based on NCBI blast	
-	for fasta in sorted(seen_files):
-		#get base name
-		basename = fasta.replace("input/", "")
-		basename = basename.replace(".fasta", "")
-		#blast on ncbi : no possibility of remote, only on local copy of ncbi nt db : database, query_file, blast_output, thread
-		database = path_2_ncbi_blastdb
-		blast_output = "output/" + basename + '_on_NCBI.blast6TAXIDS'
-		blastn_ncbi(database, fasta, blast_output, blast_threads, blastn_mode)
-		#read blast output and determine origin of sequence : Virus or not
-		ncbi_assess(blast_output)
-		#produce final fasta with reduce set of non virus sequence : dict of sequence, original fasta file, loop or id, basename in output/ dir
-		#original fasta file reduce to host and virus
-		virus_fasta('output/origin.pickle', fasta, basename)
+	if (ncbiblast == 'yes'): #not do by default
+		for fasta in sorted(seen_files):
+			#get base name
+			basename = fasta.replace("input/", "")
+			basename = basename.replace(".fasta", "")
+			#blast on ncbi : no possibility of remote, only on local copy of ncbi nt db : database, query_file, blast_output, thread
+			database = path_2_ncbi_blastdb
+			blast_output = "output/" + basename + '_on_NCBI.blast6TAXIDS'
+			blastn_ncbi(database, fasta, blast_output, blast_threads, blastn_mode)
+			#read blast output and determine origin of sequence : Virus or not
+			ncbi_assess(blast_output)
+			#produce final fasta with reduce set of non virus sequence : dict of sequence, original fasta file, loop or id, basename in output/ dir
+			#original fasta file reduce to host and virus
+			virus_fasta('output/origin.pickle', fasta, basename)
 		
 	
 	##reduce fasta based on deconcat outstat and order hits
@@ -71,9 +73,10 @@ def main(list_file, genome_file, path_2_ncbi_blastdb, blast_threads, gap_window,
 		loop += 1
 		#get cider output
 		stat = seen_files[fasta]
-		#modify name to get non-virus sequence
-		fasta = fasta.replace("input/", "output/")
-		fasta = fasta.replace(".fasta", "-nonvirus.fasta")
+		#modify name to get non-virus sequence : olny do the modification if Virus disctionction done by NCBI blast
+		if (ncbiblast == 'yes'):
+			fasta = fasta.replace("input/", "output/")
+			fasta = fasta.replace(".fasta", "-nonvirus.fasta")
 		#produce list of > 0 round of deconcat
 		deconcat_parser(stat)
 		#filter fasta file (file1.fasta) based on deconcat list : : dict of sequence, original fasta file, loop or id, basename
@@ -138,6 +141,3 @@ def main(list_file, genome_file, path_2_ncbi_blastdb, blast_threads, gap_window,
 	
 if __name__ == '__main__':
     main()
-
-
-

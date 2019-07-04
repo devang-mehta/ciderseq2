@@ -19,7 +19,7 @@ def deconcat_parser(deconcat_stat):
 		query = split_liste[0]
 		cycle = split_liste[1]
 		
-		if (cycle > 0):
+		if (int(cycle) > 0):
 			deconcatfilters.append(query)
 	
 	pick_file = 'output/deconcat.pickle';

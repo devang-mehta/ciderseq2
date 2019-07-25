@@ -10,7 +10,7 @@ Mehta D, Hirsch-Hoffmann M, Were M, Patrignani A, Were H, Gruissem W, Vanderschu
 
 CODE: [![DOI](https://zenodo.org/badge/94900933.svg)](https://zenodo.org/badge/latestdoi/94900933)
 
-#### Pseudocode and Algorithm Description:
+#### Pseudocode / Algorithm Description:
 Please refer to the Figures and Methods sections of Mehta et al., 2019 Nucleic Acids Research: https://doi.org/10.1093/nar/gky914
 
 ## Table of contents

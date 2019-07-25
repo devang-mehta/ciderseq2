@@ -3,7 +3,7 @@
 This repository contains data analysis software for CIDER-Seq (Circular DNA Enrichment Sequencing) including an implementation
 of the **DeConcat** algorithm for sequence de-concatenation and a new eccDNA detection module.
 
-## Please cite:
+### Please cite:
 
 Mehta D, Hirsch-Hoffmann M, Were M, Patrignani A, Were H, Gruissem W, Vanderschuren H (2019) _A new full-length circular DNA sequencing method for viral-sized genomes reveals that RNAi transgenic plants provoke a shift in geminivirus populations in the field._ ***Nucleic Acids Research*** , Volume 47, Issue 2; https://doi.org/10.1093/nar/gky914
 

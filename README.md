@@ -60,7 +60,7 @@ See [howto python macOS](howto_python_macOS.md) or [howto_python_LINUX.md](howto
 ### Python Modules
 
 * [NumPy](http://www.numpy.org/)
-* [Biopython](https://www.biopython.org)
+* [Biopython](https://pypi.org/project/biopython/1.77/) **Note:**Please use Biopython version 1.77 or previous
 * [Click](http://click.pocoo.org/5/)
 * [Matplotlib](https://matplotlib.org/)
 
